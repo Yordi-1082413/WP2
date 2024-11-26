@@ -1,0 +1,85 @@
+* {
+    /* Change your font family */
+        font-family: sans-serif;
+     }
+   
+     body{
+       margin-top: 5%;
+       width: 100%;
+       display: flex;
+     }
+
+     .container{
+       margin-left: auto;
+       margin-right: auto;
+     }
+
+   .content-table{
+       min-width: 400px;
+       border-collapse: collapse;
+       margin-top: 5%;
+       font-size: 1.2em;
+       overflow: hidden;
+       box-shadow: 0 0 20px rgb(0,0,0,0.15);
+   }
+
+   .content-table thead tr {
+       background-color: rgb(61,187,86);
+       color: white;
+       text-align: left;
+       font-weight: bold;
+   }
+
+   .content-table th,
+   .content-table td {
+       padding: 12px 15px;
+   }
+
+   .content-table tbody tr {
+       border-bottom: 1px solid #dddddd;
+   }
+
+   .content-table tbody tr:nth-of-type(even) {
+       background-color: #f3f3f3;
+   }
+
+
+   .content-table tbody tr:hover {
+       color: rgb(61,187,86);
+   }
+
+   .delete{
+       color: #FF0000; 
+       margin-left: 15px; 
+   }
+
+   .update{
+       color: #004DF5;
+       margin-left: 5px;
+   }
+
+   .createcategory{
+    background-color: #004DF5;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 0;
+    min-width: 400px;
+   }
+
+   .link{
+    text-decoration: none;
+   }
+
+   .addcategoryicon{
+    margin-left: 5px;
+   }
+
+   .createcategory:hover {
+    background-color: rgb(61,187,86);
+  }

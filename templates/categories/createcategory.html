@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{url_for('static', filename='style/createcategory.css')}}">
+    </head>
+    {% include 'navbar.html' %}
+
+    <body>
+        <div class="form-container">
+            <a href="/categories" class="back">
+                <i class="back fa-solid fa-backward"></i>
+            </a>
+            <form action="{{ url_for('addcategory') }}" method="POST">
+                <h2 class="titel">Nieuwe categorie</h2>
+                <div class="input-box">
+                    <input class="input" type="text" name="category" placeholder="Voeg een category toe"/><br>
+                    <i class="list fa-solid fa-list"></i>
+                </div>
+                <button type="submit" class="button">Toevoegen</button>
+            </form>
+        </div>
+    </body>
+</html>

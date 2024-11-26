@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{url_for('static', filename='style/categories.css')}}">
+    </head>
+    {% include 'navbar.html' %}
+    <body>
+        <div class="container">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Categorie</th>
+                        <th>Datum</th>
+                        <th>Acties</th>
+                    </tr>   
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td>{{row['omschrijving']}}</td>
+                        <td>{{row['date_created']}}</td>
+                        <td><a href="/{{row['category_id']}}/deletecategory"><i class="delete fa-sharp fa-solid fa-x"></i></a> <a class="" href="/{{row['category_id']}}/updatecategoryform"><i class="update fa-solid fa-pen"></i></a></td>
+                    </tr>  
+                    {% endfor %} 
+                </tbody>
+            </table>  
+            <a class="link" href="/categoryform"><div class="createcategory">Voeg toe<i class="addcategoryicon fa-solid fa-plus"></i></div></a>
+        </div>
+    </body>
+
+</html>
+
+
+   

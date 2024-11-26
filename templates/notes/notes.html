@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </link>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/notes_page.css') }}">
+</head>
+{% include 'navbar.html' %}
+<body>
+
+    <div class="parent">
+        <div class="notespage">
+            <form class="" action="{{ url_for('searchnotes') }}" method="POST">
+                <div class="wrap">
+                    <div class="search">
+                       <input type="text" class="searchTerm" name="note" placeholder="Zoek notitie">
+                       <button type="submit" class="searchButton">
+                         <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                 </div>
+            </form>
+            <table class="tableclass">
+                <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Docent</th>
+                        <th>Categorie</th>
+                        <th>Inhoud</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for note in notes %}
+                    <tr >
+                        <td class="notecontent">{{ note[1] }}</td>
+                        <td class="notecontent">{{ note[5] }}</td>
+                        <td class="notecontent">{{ note[7] }}</td>
+                        <td class="notecontent" >{{ note[8] }}</td>
+                        <td><a href="{{ url_for('delete_note', note_id=note[0]) }}"><i class="delete fa-sharp fa-solid fa-x"></i></a> <a class="" href="{{ url_for('edit_note', note_id=note[0]) }}"><i class="update fa-solid fa-pen"></i></a><a href="{{ url_for('gpt', note_id=note[0]) }}"><i class="gpt fa fa-server"></i></a> </td>
+
+    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="link" href="/newnote"><div class="createnote">Voeg toe<i class="addnoteicon fa-solid fa-plus"></i></div></a>
+            <div class="centerbuttons">
+                
+            {% if page_id > 1 %}
+            <a class="navbutton" href="{{ url_for('notesroute', page_id=page_id-1) }}">Previous</a>
+            {% endif %}
+            {{page_id}}
+            {% if page_id < max_pages %}
+            <a class="navbutton" href="{{ url_for('notesroute', page_id=page_id+1) }}">Next</a>
+            {% endif %}
+        </div>
+    
+    
+        </div>
+    </div>
+</body>
+
+</html>

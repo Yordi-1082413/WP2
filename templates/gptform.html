@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style/notes.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+{% include 'navbar.html' %}
+<div class="parent">
+    <div class="left-container">
+        <div class="notes">
+            <label>Gegenereerde vragen die deze notitie  gebruiken : </label>
+     
+            {% for row in examawnsers %}
+            <div class="question-note">
+                <p> Vraag nummer : {{ row['questions_id'] }} <br>
+                    {{ row['exam_question'] }} <br> Antwoord : {{ row['content'] }} <br/> 
+                </p>
+            </div>
+            <div class="button-container">
+                <form action="{{ url_for('generateawnser', examquestion=row['questions_id']) }}">
+                <input type="submit" value="Genereer antwoord"></form>
+                <form action="{{ url_for('generatemultiawnser', examquestion=row['questions_id']) }}">
+                <input type="submit" value="Genereer meerkeuze antwoord"></form>
+                <form action="{{ url_for('deleteawnser', examquestion=row['questions_id']) }}">
+                <input type="submit" value="Verwijder"></form>
+            </div>
+            {% endfor %}
+
+
+            <br><br>
+
+            <form action="{{ url_for('exportdata', note_id=note[0][0]) }}">
+                <input type="submit" value="Download all questions">
+             </form>
+    </div>
+        
+    </div>
+
+
+    <div class="right-container">
+        <form action="{{ url_for('gpt', note_id=note[0][0]) }}" method="post">
+
+            <label>Opgelet: Veranderingen hier worden niet opgeslagen</label>
+            <label for="gptquestion">GPT-vraag :</label>
+            <input type="text" id="gptquestion" name="gptquestion" value="Maak een examenvraag over het onderwerp in deze notitie :">
+
+
+            <label>Titel</label>
+            <input type="text" id="title" name="title" value="{{ note[0][1] }}">
+            <textarea id="note" name="note" class="noteinput" cols="50">{{ note[0][8] }}</textarea>
+
+            <label>Categorie</label>
+            <input type="text" id="category" name="category" readonly  value="{{ note[0][7] }}"> </input>
+
+            <label>Meerkeuze : </label>
+            <input type="checkbox" id="multiplechoicecheckbox"  name="multiplechoicecheckbox">
+            <input type="submit" value="Genereer vraag">
+        </form>
+    </div>
+</div>

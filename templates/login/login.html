@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{url_for('static', filename='style/login.css')}}">
+    </head>
+    <body>
+        <div class="form-container">
+            <form  action="{{ url_for('authenticate') }}" method="POST">
+                <h2 class="titel">Login</h2>
+                <div class="input-box">
+                    <input class="input" type="text" name="username" placeholder="Username"/><br>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="input-box">
+                    <input class="input" type="password" name="password" placeholder="Password"/><br>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="button" type="submit">Submit</button>
+                <div class="errormessage">{{msg}}</div>
+            </form>
+        </div>
+    </body>
+</html>

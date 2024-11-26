@@ -1,0 +1,28 @@
+.alert {
+    position: fixed;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #FF9494;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 15px 15px 50px;
+   }
+
+.success {
+    position: fixed;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #daf0b5;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 15px 15px 50px;
+}
+
+
+   
+
+   

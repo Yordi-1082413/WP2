@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .notespage{
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+
+.row{
+    height: 350px;
+}
+
+.row2{
+    background-color: #F0F2F5;
+    height: 350px;
+}
+
+.welkomh1{
+  text-align: center;
+  font-size: 40px;
+  }
+.welkomh1 span{
+  color: #3dbb56;
+}
+
+
+.titel{
+  padding-top: 80px;
+    text-align: center;
+    font-size: 46px;
+}
+
+.titel2{
+    padding-top: 80px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.gobutton {
+    background-color: #004DF5;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%; 
+  }
+
+  .gobutton:hover {
+    background-color: rgb(61,187,86);
+  }
+
+  .text{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+
+  }
+
+
+  .link{
+    text-decoration: none;
+  }

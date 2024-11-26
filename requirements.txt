@@ -1,0 +1,5 @@
+openai
+flask==2.2.5
+flask_breadcrumbs
+flask-menu==0.7.2
+flask_bcrypt

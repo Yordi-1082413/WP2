@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{url_for('static', filename='style/login.css')}}">
+    </head>
+    {% include 'navbar.html' %}
+
+    <body>
+        <div class="form-container">
+            {% for teach in teacher %}
+            <form action="/{{teach['teacher_id']}}/updateteacher" method="POST">
+                <h2 class="titel">Gebruiker aanpassen</h2>
+                <div class="input-box">
+                    <input class="input" type="text" name="name" value="{{teach['display_name']}}"/><br>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="input-box">
+                    <input class="input" type="text" name="username" value="{{teach['username']}}"/><br>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="input-box">
+                    <input class="input" type="text" name="password" placeholder="Nieuw wachtwoord hier"/><br>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="button" type="submit">Aanpassen</button>
+                <div class="errormessage">{{msg}}</div>
+                {% endfor %}
+            </form>
+        </div>
+    </body>
+</html>

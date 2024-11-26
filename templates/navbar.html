@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="UTF-8">
+ <link rel="stylesheet" href="style.css">
+  <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style/navbar.css') }}">
+     <link rel="stylesheet" href="{{url_for('static', filename='style/flash.css')}}">
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+     <title>Test Correct</title>
+
+
+   </head>
+<body>
+  <nav>
+
+    <div class="navbar">
+      <div class="logo">
+        <a href="/home">
+        <img src="https://www.test-correct.nl/hs-fs/hubfs/01%20TC%20assets%20-%20logos/01%20Test-Correct/02%20white%20version/Logo-Test-Correct%20recolored%20icon-only%20white@1x-1.png?width=64&height=64&name=Logo-Test-Correct%20recolored%20icon-only%20white@1x-1.png"/>
+      </a>
+      </div>
+      <ul class="menu">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/notes">Notities</a></li>
+        <li><a href="/categories">Categories</a></li>
+        {% if session['is_admin'] == 1: %}
+          <li><a href="/teachers">Docenten</a></li>
+        {% endif %}
+        <li><a href="/logout"> Uitloggen <i class="fas fa-sign-out-alt"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+<!-- Notifications and breadcrums part -->
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+    {% if category == 'error' %}
+      <div class="flash alert">
+        {{ message }}
+      </div>
+    {% endif %}
+    {% if category == 'success' %}
+    <div class="flash success">
+      {{ message }}
+    </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+  <div class="breadcrum">
+    {%- for breadcrumb in breadcrumbs -%}
+        <a class="breadcrum-item" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>  
+    {%- endfor -%}
+    </div>
+</body>
+</html>
+
+<script>
+window.onload = function() {
+  var flashElements = document.querySelectorAll('.flash');
+  for (var i = 0; i < flashElements.length; i++) {
+    flashElements[i].style.opacity = 1;
+
+    setTimeout((function(i) {
+      var flashElement = flashElements[i];
+      var opacity = 1;
+      var timer = setInterval(function() {
+        opacity -= 0.02;
+        flashElement.style.opacity = opacity;
+
+        if (opacity <= 0) {
+          clearInterval(timer);
+          flashElement.style.display = 'none';
+        }
+      }, 150);
+    })(i), 3000);
+  }
+}
+  </script>

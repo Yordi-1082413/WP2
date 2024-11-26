@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/landing.css') }}">
+    <title>Test Correct</title>
+    {% include 'navbar.html' %}
+</head>
+<body>
+    
+    <div class="parent">
+        <div class="notespage">
+            <div class="row">
+                <h1 class="welkomh1"> Welkom, <span>{{teachername}}</span></h1> 
+                <div class="text">Welkom bij de website van Test-Correct, hier kan je notities maken, opslaan en ChatGPT gebruiken voor het 
+                    genereren van vragen en antwoorden, lees hieronder hoe je verder kan.
+                </div>
+
+            </div>
+            <div class="row2">
+                <div class="titel">Notities</div>
+                <div class="text">Klik op de knop hieronder om naar notities te gaan</div>
+                <a class="link" href="/notes"><div class="gobutton">Ga naar Notities</div></a>
+
+
+            </div>
+            <div class="row">
+                <div class="titel2">Categories</div>
+                <div class="text">Klik op de knop hieronder om naar categories te gaan</div>
+                <a class="link" href="/categories"><div class="gobutton">Ga naar Categories</div></a>
+            </div>
+            {% if session['is_admin'] == 1: %}
+                <div class="row2">
+                    <div class="titel2">Docenten</div>
+                    <div class="text">Klik op de knop hieronder om naar docenten te gaan</div>
+                    <a class="link" href="/teachers"><div class="gobutton">Ga naar Docenten</div></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    
+</script>
